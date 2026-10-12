@@ -50,7 +50,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'singh_group.urls'
 
@@ -143,7 +146,6 @@ DEBUG = True
 
 STATIC_URL = '/static/'
 
-# 👇 root static folder ka path do
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
@@ -151,9 +153,6 @@ STATICFILES_DIRS = [
 """
 # for prod
 
-DEBUG = False
-
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEBUG = False
 STATIC_URL = '/static/'
